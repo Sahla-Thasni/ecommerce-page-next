@@ -2,14 +2,13 @@ import { ServiceBase } from "./service-base";
 
 export class ProductService extends ServiceBase {
   
-  static getproducts = async () => {
-  const url = this.getUrl("/products");
-  console.log("URL =", url);
+static getproducts = async () => {
+  const response = await fetch("https://fakestoreapi.com/products");
 
-  const response = await fetch(url);
+  console.log("Status:", response.status);
 
   const text = await response.text();
-  console.log(text.substring(0, 100));
+  console.log("Response starts with:", text.substring(0, 100));
 
   return JSON.parse(text);
 };
