@@ -5,13 +5,16 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
 
-
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      <Navbar />
-      <Component {...pageProps} />
-      <Footer/>
+      <div className="d-flex flex-column min-vh-100">
+        <Navbar />
+        <main className="flex-grow-1">
+          <Component {...pageProps} />
+        </main>
+        <Footer />
+      </div>
     </>
   );
 }

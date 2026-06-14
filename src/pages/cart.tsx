@@ -1,36 +1,26 @@
+"use client";
 
-'use client'
+import { useEffect, useState } from "react";
+import ProductCard from "../components/product-card/ProductCard";
 
-import { useEffect, useState } from "react"
-import ProductCard from "../components/product-card/ProductCard"
+export default function CartPage() {
+  const [cartItems, setCartItems] = useState<any[]>([]);
 
-export default function CartPage(){
+  useEffect(() => {
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
 
- const [cartItems,setCartItems] = useState<any[]>([])
+    setCartItems(cart);
+  }, []);
 
- useEffect(()=>{
+  return (
+    <div className="container">
+      <h2>Your Cart</h2>
 
-   const cart = JSON.parse(localStorage.getItem("cart") || "[]")
-
-   setCartItems(cart)
-
- },[])
-
- return(
-
-   <div className="container">
-
-   <h2>Your Cart</h2>
-
-   <div className="row">
-
-   {cartItems.map((product,index)=>(
-      <ProductCard key={index} product={product} isCart={true}/>
-   ))}
-
-   </div>
-
-   </div>
-
- )
+      <div className="row">
+        {cartItems.map((product, index) => (
+          <ProductCard key={index} product={product} isCart={true} />
+        ))}
+      </div>
+    </div>
+  );
 }

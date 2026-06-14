@@ -50,14 +50,30 @@ import { useEffect, useState } from "react";
 // }
 export default function Product() {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
- useEffect(() => {
+useEffect(() => {
   ProductService.getproducts()
     .then((data) => setProducts(data))
-    .catch((err) => console.error(err));
+    .catch((err) => console.error(err))
+    .finally(() => setLoading(false));
 }, []);
 
-
-   return <ProductList products={products} />;
+ if (loading) {
+  return (
+    <div className="text-center mt-5">
+      <div className="spinner-border text-danger" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </div>
+      <p className="text-danger mt-2">Loading Products...</p>
+    </div>
+  );
+}
+   return (
+   <div className="text-center mt-5">
+     
+      <ProductList products={products} />;
+    </div> 
+);
 
 }

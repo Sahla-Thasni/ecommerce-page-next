@@ -1,5 +1,5 @@
 export abstract class ServiceBase {
-protected static readonly API_URL = "https://fakestoreapi.com";
+  protected static readonly API_URL = "https://fakestoreapi.com";
 
   static async get(path: string) {
     const response = await fetch(this.getUrl(path), {
