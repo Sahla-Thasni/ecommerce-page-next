@@ -11,9 +11,7 @@ export default function ProductCard(props:any) {
         console.log("Selected Product:",prod)
         setSelectedProduct(prod)
     }
-    useEffect(()=>{
-        fetch("https://fakestoreapi.com/products/1")
-    },[])
+ 
     const router=useRouter();
 
 
