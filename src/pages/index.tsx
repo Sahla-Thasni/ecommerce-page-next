@@ -79,7 +79,7 @@ export default function Home() {
 
     <div className="col-auto text-center">
       <Image
-        src="/jewelry.PNG"
+        src="/Jewelry.PNG"
         width={180}
         height={260}
         alt="Jewelry"

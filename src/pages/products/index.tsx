@@ -14,24 +14,36 @@ export default function Product({ products }: any) {
 //     },
 //   };
 // }
+// export async function getServerSideProps() {
+//   try {
+//     const products = await ProductService.getproducts();
+
+//     return {
+//       props: {
+//         products,
+//       },
+//     };
+//   } catch (error) {
+//     console.error(error);
+
+//     return {
+//       props: {
+//         products: [],
+//       },
+//     };
+//   }
+// }
 export async function getServerSideProps() {
-  try {
-    const products = await ProductService.getproducts();
-
-    console.log("Products loaded:", products.length);
-
-    return {
-      props: {
-        products,
-      },
-    };
-  } catch (error) {
-    console.error("getServerSideProps error:", error);
-
-    return {
-      props: {
-        products: [],
-      },
-    };
-  }
+  return {
+    props: {
+      products: [
+        {
+          id: 1,
+          title: "Test Product",
+          price: 100,
+          image: "https://via.placeholder.com/150",
+        },
+      ],
+    },
+  };
 }
